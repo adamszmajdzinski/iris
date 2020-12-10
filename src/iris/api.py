@@ -801,7 +801,8 @@ class AuthMiddleware(object):
                 app, client_digest = req.get_header('AUTHORIZATION', '')[5:].split(':', 1)
 
             if app not in cache.applications:
-                logger.warning('Tried authenticating with nonexistent app: "%s"', app)
+                #logger.warning('Tried authenticating with nonexistent app: "%s"', app)
+                logger.warning('adamdebug: "%s"', cache.applications)
                 raise HTTPUnauthorized('Authentication failure',
                                        'Application not found', [])
             req.context['app'] = cache.applications[app]
